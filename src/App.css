@@ -1,9 +1,16 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  background-color: #c5cedf;
+  height: 100vh;
+  width: 100vw;
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 1.5em;
   pointer-events: none;
 }
 
@@ -14,14 +21,19 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* min-height: 100vh; */  
+  font-size: calc(10px + 1.5vmin);
   color: white;
+  display: flex;
+  background: #50aadd;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  width: 320px;
+  height: 74px;
+  align-items: center;
+}
+
+.sub-title {
+  font-size: 14px;
 }
 
 .App-link {

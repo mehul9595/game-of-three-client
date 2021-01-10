@@ -1,6 +1,14 @@
-# Getting Started with Create React App
 
+# Game of Three Frontend
+
+Game of three is a fun game played with multiplayer or computer.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+This project is built with:
+
+- React
+- Ant Design
+- SCSS
 
 ## Available Scripts
 
