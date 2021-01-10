@@ -8,8 +8,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <span>Scoober - Takeaway.com</span>
-        <span className="sub-title">Win the game or win the job</span>
+        <div className="title">
+          <div className="first-line">Scoober - Takeaway.com</div>
+          <div className="sub-title">Win the game or win the job</div>
+        </div>
       </header>
       <p>This is paragraph</p>
     </div>
