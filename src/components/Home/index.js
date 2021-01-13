@@ -4,7 +4,7 @@ const Home = (props) => {
     return (
         <>
             <div className="home">
-                <h1>Game of Three</h1>
+                <h1>Game of ThreeX</h1>
                 <p>Single Player</p>
                 <p>Multiplayer</p>
             </div>

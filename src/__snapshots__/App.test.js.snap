@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render with snapshot correctly 1`] = `
+<div>
+  <div
+    class="App"
+  >
+    <div
+      class="container"
+    >
+      <header
+        class="App-header"
+      >
+        <img
+          alt="logo"
+          class="App-logo"
+          src="logo.svg"
+        />
+        <div
+          class="title"
+        >
+          <div
+            class="first-line"
+          >
+            Scoober - Takeaway.com
+          </div>
+          <div
+            class="sub-title"
+          >
+            Win the game or win the job
+          </div>
+        </div>
+      </header>
+      <div
+        class="home"
+      >
+        <h1>
+          Game of ThreeX
+        </h1>
+        <p>
+          Single Player
+        </p>
+        <p>
+          Multiplayer
+        </p>
+      </div>
+      <p>
+        This is paragraph
+      </p>
+    </div>
+  </div>
+</div>
+`;

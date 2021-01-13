@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HomeComponent should render sucessfully with snapshot 1`] = `
+<div>
+  <div
+    class="home"
+  >
+    <h1>
+      Game of ThreeX
+    </h1>
+    <p>
+      Single Player
+    </p>
+    <p>
+      Multiplayer
+    </p>
+  </div>
+</div>
+`;
