@@ -4,7 +4,7 @@ import './style.css';
 const Layout = (props) => {
   return (
     <>
-      <div className="container">{props.children}</div>
+      <div className="layout-container">{props.children}</div>
     </>
   );
 };
