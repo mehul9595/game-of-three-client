@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./components/Header";
 import Layout from "./containers/Layout";
 import Home from './components/Home'
+import PlayArea from './components/PlayArea';
 
 import "./App.css";
 
@@ -11,7 +12,7 @@ function App() {
       <Layout>
         <Header />
         <Home />
-        <p>This is paragraph</p>
+        <PlayArea />
       </Layout>
     </div>
   );

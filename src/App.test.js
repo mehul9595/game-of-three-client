@@ -5,4 +5,5 @@ test("should render with snapshot correctly", () => {
   const container = render(<App />).container;
   
   expect(container).toMatchSnapshot();
+  
 });

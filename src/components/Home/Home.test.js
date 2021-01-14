@@ -13,7 +13,7 @@ describe("HomeComponent", () => {
 
     it("should render sucessfully with snapshot", ()=> {
         const { container }   = render(<Home />);
-        expect(container).toMatchSnapshot();        
+        expect(container.firstChild).toMatchSnapshot();        
     });
     
 });
