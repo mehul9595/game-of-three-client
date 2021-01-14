@@ -4,6 +4,6 @@ import App from "./App";
 test("should render with snapshot correctly", () => {
   const container = render(<App />).container;
   
-  expect(container).toMatchSnapshot();
+  expect(container.firstChild.className).toBe("App");
   
 });
