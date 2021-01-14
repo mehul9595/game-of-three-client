@@ -44,9 +44,39 @@ exports[`should render with snapshot correctly 1`] = `
           Multiplayer
         </p>
       </div>
-      <p>
-        This is paragraph
-      </p>
+      <div
+        class="play-area-container"
+      >
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </div>
+      <div
+        class="action-button-container"
+      >
+        <button
+          class="ant-btn ant-btn-primary ant-btn-circle ant-btn-lg"
+          type="button"
+        >
+          <span>
+            +1
+          </span>
+        </button>
+        <button
+          class="ant-btn ant-btn-primary ant-btn-circle ant-btn-lg"
+          type="button"
+        >
+          <span>
+            0
+          </span>
+        </button>
+        <button
+          class="ant-btn ant-btn-primary ant-btn-circle ant-btn-lg"
+          type="button"
+        >
+          <span>
+            -1
+          </span>
+        </button>
+      </div>
     </div>
   </div>
 </div>

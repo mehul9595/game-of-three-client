@@ -3,7 +3,7 @@ import Header from "./components/Header";
 import Layout from "./containers/Layout";
 import Home from './components/Home'
 import PlayArea from './components/PlayArea';
-
+import ActionButton from "./components/ActionButton";
 import "./App.css";
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
         <Header />
         <Home />
         <PlayArea />
+        <ActionButton  />
       </Layout>
     </div>
   );

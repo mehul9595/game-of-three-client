@@ -1,4 +1,5 @@
 .play-area-container
 {
-    /* height: 600px; */
+    height: calc(30vh + 50px);
+    max-height: 500px;
 }
