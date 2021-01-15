@@ -2,10 +2,11 @@
 
 exports[`ActionButton Component should match the snapshot sucessfully 1`] = `
 <div
-  class="action-button-container"
+  className="action-button-container"
 >
   <button
-    class="ant-btn ant-btn-primary ant-btn-circle ant-btn-lg"
+    className="ant-btn ant-btn-primary ant-btn-circle ant-btn-lg"
+    onClick={[Function]}
     type="button"
   >
     <span>
@@ -13,7 +14,8 @@ exports[`ActionButton Component should match the snapshot sucessfully 1`] = `
     </span>
   </button>
   <button
-    class="ant-btn ant-btn-primary ant-btn-circle ant-btn-lg"
+    className="ant-btn ant-btn-primary ant-btn-circle ant-btn-lg"
+    onClick={[Function]}
     type="button"
   >
     <span>
@@ -21,7 +23,8 @@ exports[`ActionButton Component should match the snapshot sucessfully 1`] = `
     </span>
   </button>
   <button
-    class="ant-btn ant-btn-primary ant-btn-circle ant-btn-lg"
+    className="ant-btn ant-btn-primary ant-btn-circle ant-btn-lg"
+    onClick={[Function]}
     type="button"
   >
     <span>

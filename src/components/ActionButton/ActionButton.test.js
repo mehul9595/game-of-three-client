@@ -1,5 +1,8 @@
 import React from "react";
 import { screen, render, logDOM } from "@testing-library/react";
+import renderer from 'react-test-renderer';
+
+// import "@testing-library/jest-dom";
 import ActionButton from "./index";
 
 describe("ActionButton Component", () => {
@@ -17,8 +20,9 @@ describe("ActionButton Component", () => {
   });
 
   test("should match the snapshot sucessfully", () => {
-    const { container } = render(<ActionButton />);
+    const tree = renderer.create(<ActionButton />).toJSON();
 
-    expect(container.firstChild).toMatchSnapshot();
+    // expect(container.firstChild).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 });
