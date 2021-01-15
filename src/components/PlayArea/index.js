@@ -6,7 +6,6 @@ import AvatarSrc from "../../assets/avatar.png";
 import "antd/dist/antd.css";
 
 const PlayArea = (props) => {
-
   return (
     <>
       <List
@@ -25,15 +24,17 @@ const PlayArea = (props) => {
               }
               title={turn.player === "player" ? "You" : "Bot"}
               description={
-                <Avatar
-                  style={{
-                    backgroundColor: "#50aadd",
-                    verticalAlign: "middle",
-                  }}
-                  size="large"
-                >
-                  {turn.action}
-                </Avatar>
+                turn.action !== undefined && (
+                  <Avatar
+                    style={{
+                      backgroundColor: "#50aadd",
+                      verticalAlign: "middle",
+                    }}
+                    size="large"
+                  >
+                    {turn.action}
+                  </Avatar>
+                )
               }
             ></List.Item.Meta>
             {turn.value}
