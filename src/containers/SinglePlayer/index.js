@@ -24,7 +24,9 @@ const SinglePlayer = (props) => {
       id: turnCounter,
       player: turnCounter % 2 === 0 ? "Bot" : "player",
       value: Math.random(),
+      action: params
     };
+
     setTurnArray((result) => [...result, newTurn]);
     console.log(turnArray);
   };
