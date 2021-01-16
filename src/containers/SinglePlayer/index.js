@@ -16,9 +16,7 @@ const playerTypes = {
   player: "player",
 };
 
-
 const SinglePlayer = (props) => {
-  
   const [turnCount, setTurnCount] = useState(0);
   // const [
   //   requiredNumberToBeDividedByThree,
@@ -30,6 +28,8 @@ const SinglePlayer = (props) => {
       id: 0,
       player: playerTypes.bot,
       value: getInitialNumber(),
+      action: undefined,
+      valueExpression: ""
     },
   ]);
 
@@ -37,7 +37,7 @@ const SinglePlayer = (props) => {
     if (turnCount > 0) {
       calculateNumbers(turnCount);
       console.log("calculateNumbers", turnCount);
-      if (calculateNewNumberToSendOpponent(turnCount) === 1) {
+      if (calculateNewNumberToSendOpponent(turnCount).value === 1) {
         // this.modalForGameResult(this.detectTurnPlayer());
         message.success("win");
         return true;
@@ -86,25 +86,38 @@ const SinglePlayer = (props) => {
   };
 
   const setNewTurn = (turnCounter) => {
+    var calcNewNumber = calculateNewNumberToSendOpponent(turnCounter);
     let newTurn = {
       id: turnCounter,
       player: getPlayerTurn(),
-      value: calculateNewNumberToSendOpponent(turnCounter),
+      value: calcNewNumber.value,
       action: requiredNumberToBeDividedByThree,
+      valueExpression: calcNewNumber.valueExpresionStr,
     };
 
     updateTurnArray(newTurn);
   };
 
   const calculateNewNumberToSendOpponent = (turnCounter) => {
-    console.log(
-      "calculateNewNumberToSendOpponent:turnArray",
-      turnArray[turnCounter - 1]
-    );
+    // console.log(
+    //   "calculateNewNumberToSendOpponent:turnArray",
+    //   turnArray[turnCounter - 1]
+    // );
 
-    let calculatedNumber =
+    let expression =
       turnArray[turnCounter - 1].value + requiredNumberToBeDividedByThree;
-    return parseInt(calculatedNumber, 10) / 3;
+    
+    let calculatedValue = parseInt(expression, 10) / 3;
+    
+    let stringExpression = `[( ${requiredNumberToBeDividedByThree} + ${
+      turnArray[turnCounter - 1].value
+    } ) / 3] = ${calculatedValue}`;
+    console.log("stringExpression: ", stringExpression);
+
+    return {
+      value: calculatedValue,
+      valueExpresionStr: stringExpression,
+    };
   };
 
   const calculateNumbers = (turnCount) => {
@@ -112,7 +125,7 @@ const SinglePlayer = (props) => {
 
     assignNumberNeedsToBeAdded(turnValue);
     // console.log("calculateNumbers", turnCount);
-    calculateNewNumberToSendOpponent(turnCount);
+    // calculateNewNumberToSendOpponent(turnCount);
     // console.log("calculateNumbers", turnCount);
 
     setNewTurn(turnCount);
