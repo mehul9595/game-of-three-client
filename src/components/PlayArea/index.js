@@ -1,5 +1,5 @@
 import React from "react";
-import { List, Avatar } from "antd";
+import { List, Avatar, Label } from "antd";
 import { RobotOutlined } from "@ant-design/icons";
 import "./style.css";
 import AvatarSrc from "../../assets/avatar.png";
@@ -37,7 +37,10 @@ const PlayArea = (props) => {
                 )
               }
             ></List.Item.Meta>
-            {turn.value}
+            <label hidden={turn.valueExpression ? false : true}>
+              {turn.valueExpression} <br />
+            </label>
+            <label>{turn.value}</label>
           </List.Item>
         )}
       />
