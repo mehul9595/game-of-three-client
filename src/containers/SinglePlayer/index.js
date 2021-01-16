@@ -29,20 +29,30 @@ const SinglePlayer = (props) => {
       player: playerTypes.bot,
       value: getInitialNumber(),
       action: undefined,
-      valueExpression: ""
+      valueExpression: "",
     },
   ]);
 
   useEffect(() => {
-    if (turnCount > 0) {
+    // if (turnCount > 0 && turnCount % 2 === 0) {
+    //   let botTurn = turnCount + 1;
+    //   calculateNumbers(botTurn);
+    //   console.log("turnCount", botTurn);
+    //   setTurnCount(botTurn);
+    //   if (calculateNewNumberToSendOpponent(botTurn).value === 1) {
+    //     // this.modalForGameResult(this.detectTurnPlayer());
+    //     message.success("win");
+    //     return true;
+    //   }
+    // } else {
       calculateNumbers(turnCount);
-      console.log("calculateNumbers", turnCount);
+      console.log("turnCount", turnCount);
       if (calculateNewNumberToSendOpponent(turnCount).value === 1) {
         // this.modalForGameResult(this.detectTurnPlayer());
         message.success("win");
         return true;
       }
-    }
+    // }
   }, [turnCount]);
 
   const assignNumberNeedsToBeAdded = () => {
@@ -51,37 +61,19 @@ const SinglePlayer = (props) => {
     console.log("turnCOunt", turnCount);
     if (turnValue % 3 === 0) {
       requiredNumberToBeDividedByThree = 0;
-      // setRequiredNumberToBeDividedByThree(
-      //   (requiredNumberToBeDividedByThree) =>
-      //     (requiredNumberToBeDividedByThree = 0)
-      // );
     } else if ((turnValue + 1) % 3 === 0) {
       requiredNumberToBeDividedByThree = 1;
-      // setRequiredNumberToBeDividedByThree(
-      //   (requiredNumberToBeDividedByThree) =>
-      //     (requiredNumberToBeDividedByThree = 1)
-      // );
     } else if ((turnValue - 1) % 3 === 0) {
       requiredNumberToBeDividedByThree = -1;
-      // setRequiredNumberToBeDividedByThree(
-      //   (requiredNumberToBeDividedByThree) =>
-      //     (requiredNumberToBeDividedByThree = -1)
-      // );
     }
   };
 
   const updateTurnArray = (newTurn) => {
-    // let temporaryTurnArray = turnArray;
-    // temporaryTurnArray.push(newTurn);
-
-    // this.setState({
-    //   array: temporaryTurnArray,
-    // });
     setTurnArray((result) => [...result, newTurn]);
   };
 
   const getPlayerTurn = (params) => {
-    let turnPlayer = turnCount % 2 === 0 ? playerTypes.bot : playerTypes.player;
+    let turnPlayer = params % 2 === 0 ? playerTypes.bot : playerTypes.player;
     return turnPlayer;
   };
 
@@ -89,7 +81,7 @@ const SinglePlayer = (props) => {
     var calcNewNumber = calculateNewNumberToSendOpponent(turnCounter);
     let newTurn = {
       id: turnCounter,
-      player: getPlayerTurn(),
+      player: getPlayerTurn(turnCounter),
       value: calcNewNumber.value,
       action: requiredNumberToBeDividedByThree,
       valueExpression: calcNewNumber.valueExpresionStr,
@@ -99,16 +91,11 @@ const SinglePlayer = (props) => {
   };
 
   const calculateNewNumberToSendOpponent = (turnCounter) => {
-    // console.log(
-    //   "calculateNewNumberToSendOpponent:turnArray",
-    //   turnArray[turnCounter - 1]
-    // );
-
     let expression =
       turnArray[turnCounter - 1].value + requiredNumberToBeDividedByThree;
-    
+
     let calculatedValue = parseInt(expression, 10) / 3;
-    
+
     let stringExpression = `[( ${requiredNumberToBeDividedByThree} + ${
       turnArray[turnCounter - 1].value
     } ) / 3] = ${calculatedValue}`;
@@ -124,10 +111,6 @@ const SinglePlayer = (props) => {
     let turnValue = turnArray[turnCount - 1].value;
 
     assignNumberNeedsToBeAdded(turnValue);
-    // console.log("calculateNumbers", turnCount);
-    // calculateNewNumberToSendOpponent(turnCount);
-    // console.log("calculateNumbers", turnCount);
-
     setNewTurn(turnCount);
   };
 
@@ -135,34 +118,24 @@ const SinglePlayer = (props) => {
     message.info(action);
     let actionValue = parseInt(action);
     let currentValue = turnArray[turnCount].value;
-    let turnCounter = turnCount + 1;
 
     if ((currentValue + actionValue) % 3 === 0) {
       message.success("OK good");
+      let turnCounter = turnCount + 1;
       setTurnCount(turnCounter);
-      // calculateNumbers(turnCounter);
-      // console.log("calculateNumbers", turnCounter);
-      // if (calculateNewNumberToSendOpponent(turnCounter) === 1) {
-      //   // this.modalForGameResult(this.detectTurnPlayer());
-      //   message.success("win");
-      //   return true;
-      // }
+
+      // after player turns, set turn count. on setTimeout 1 sec call checkAndResult for bot. action value would be previous turn count value
+      // setTimeout(async ()=> {
+
+      //   console.log("new turn cout after 1 sec", turnCounter);
+      //   console.log("new array after 1 sec ", turnArray);
+
+      //   // assignNumberNeedsToBeAdded(turnCount+1);
+
+      // }, 5000);
     } else {
       message.error("Number cannot be divided by 3");
     }
-
-    // var turnCounter = turnCount + 1;
-    // setTurnCount(turnCounter);
-
-    // var newTurn = {
-    //   id: turnCounter,
-    //   player: turnCounter % 2 === 0 ? "Bot" : "player",
-    //   value: Math.random(),
-    //   action: actionValue,
-    // };
-
-    // setTurnArray((result) => [...result, newTurn]);
-    // console.log(turnArray);
   };
 
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import { List, Avatar, Label } from "antd";
+import { List, Avatar } from "antd";
 import { RobotOutlined } from "@ant-design/icons";
 import "./style.css";
 import AvatarSrc from "../../assets/avatar.png";
