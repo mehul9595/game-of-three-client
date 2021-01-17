@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import { List, Avatar } from "antd";
 import { RobotOutlined } from "@ant-design/icons";
 import "./style.css";
@@ -6,6 +6,11 @@ import AvatarSrc from "../../assets/avatar.png";
 import "antd/dist/antd.css";
 
 const PlayArea = (props) => {
+  const listItemRef = useRef(null);
+  useEffect(() => {
+    listItemRef.current.scrollIntoView({behavior: 'smooth'});
+  });
+
   return (
     <>
       <List
@@ -41,6 +46,7 @@ const PlayArea = (props) => {
               {turn.valueExpression} <br />
             </label>
             <label>{turn.value}</label>
+            <div ref={listItemRef} />
           </List.Item>
         )}
       />
