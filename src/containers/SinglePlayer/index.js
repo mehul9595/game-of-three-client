@@ -107,6 +107,7 @@ const SinglePlayer = (props) => {
     }
 
     console.log(turnCount, turnArray);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [turnCount]);
 
   const checkActionAndResult = (action) => {
