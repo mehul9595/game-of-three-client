@@ -33,30 +33,8 @@ const SinglePlayer = (props) => {
     },
   ]);
 
-  useEffect(() => {
-    // if (turnCount > 0 && turnCount % 2 === 0) {
-    //   let botTurn = turnCount + 1;
-    //   calculateNumbers(botTurn);
-    //   console.log("turnCount", botTurn);
-    //   setTurnCount(botTurn);
-    //   if (calculateNewNumberToSendOpponent(botTurn).value === 1) {
-    //     // this.modalForGameResult(this.detectTurnPlayer());
-    //     message.success("win");
-    //     return true;
-    //   }
-    // } else {
-      calculateNumbers(turnCount);
-      console.log("turnCount", turnCount);
-      if (calculateNewNumberToSendOpponent(turnCount).value === 1) {
-        // this.modalForGameResult(this.detectTurnPlayer());
-        message.success("win");
-        return true;
-      }
-    // }
-  }, [turnCount]);
-
-  const assignNumberNeedsToBeAdded = () => {
-    var turnValue = turnArray[turnCount - 1].value;
+  const assignNumberNeedsToBeAdded = (turnValue) => {
+    // var turnValue = turnArray[turnCount - 1].value;
     console.log(turnValue);
     console.log("turnCOunt", turnCount);
     if (turnValue % 3 === 0) {
@@ -114,6 +92,23 @@ const SinglePlayer = (props) => {
     setNewTurn(turnCount);
   };
 
+  useEffect(() => {
+    if (turnCount > 0 && turnCount % 2 !== 0) {
+      var turnCounter = turnCount + 1;
+      calculateNumbers(turnCounter);
+      console.log("new turnCounter", turnCounter);
+      if (calculateNewNumberToSendOpponent(turnCounter).value === 1) {
+        // this.modalForGameResult(this.detectTurnPlayer());
+        message.success("Bot wins", 5);
+        return true;
+      } else {
+        setTurnCount(turnCounter);
+      }
+    }
+
+    console.log(turnCount, turnArray);
+  }, [turnCount]);
+
   const checkActionAndResult = (action) => {
     message.info(action);
     let actionValue = parseInt(action);
@@ -122,17 +117,15 @@ const SinglePlayer = (props) => {
     if ((currentValue + actionValue) % 3 === 0) {
       message.success("OK good");
       let turnCounter = turnCount + 1;
+
+      calculateNumbers(turnCounter);
+      console.log("turnCount", turnCounter);
+      if (calculateNewNumberToSendOpponent(turnCounter).value === 1) {
+        // this.modalForGameResult(this.detectTurnPlayer());
+        message.success("Player wins", 5);
+        return true;
+      }
       setTurnCount(turnCounter);
-
-      // after player turns, set turn count. on setTimeout 1 sec call checkAndResult for bot. action value would be previous turn count value
-      // setTimeout(async ()=> {
-
-      //   console.log("new turn cout after 1 sec", turnCounter);
-      //   console.log("new array after 1 sec ", turnArray);
-
-      //   // assignNumberNeedsToBeAdded(turnCount+1);
-
-      // }, 5000);
     } else {
       message.error("Number cannot be divided by 3");
     }
