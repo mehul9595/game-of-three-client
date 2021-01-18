@@ -18,10 +18,6 @@ const playerTypes = {
 
 const SinglePlayer = (props) => {
   const [turnCount, setTurnCount] = useState(0);
-  // const [
-  //   requiredNumberToBeDividedByThree,
-  //   setRequiredNumberToBeDividedByThree,
-  // ] = useState(null);
   let requiredNumberToBeDividedByThree = null;
   const [turnArray, setTurnArray] = useState([
     {
@@ -34,7 +30,6 @@ const SinglePlayer = (props) => {
   ]);
 
   const assignNumberNeedsToBeAdded = (turnValue) => {
-    // var turnValue = turnArray[turnCount - 1].value;
     console.log(turnValue);
     console.log("turnCOunt", turnCount);
     if (turnValue % 3 === 0) {
