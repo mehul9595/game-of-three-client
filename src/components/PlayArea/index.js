@@ -2,7 +2,8 @@ import React, { useEffect, useRef } from "react";
 import { List, Avatar } from "antd";
 import { RobotOutlined } from "@ant-design/icons";
 import "./style.css";
-import AvatarSrc from "../../assets/avatar.png";
+import AvatarSrc3 from "../../assets/avatar@3x.png";
+import TakeawayImg from "../../assets/takeaway-avatar.png";
 import "antd/dist/antd.css";
 
 const PlayArea = (props) => {
@@ -22,8 +23,19 @@ const PlayArea = (props) => {
           <List.Item key={turn.id} className={"playarea-number " + turn.player}>
             <List.Item.Meta
               avatar={
-                turn.player === "player" ? (
-                  <Avatar src={AvatarSrc} size="large" />
+                props.gameMode === "multiplayer" ? (
+                  props.playerTurn === turn.player ? (
+                    <Avatar size="default" src={AvatarSrc3} />
+                  ) : (
+                    <Avatar
+                      size="default"
+                      src={TakeawayImg}
+                      alt="Takeaway"
+                      style={{ backgroundColor: "gray" }}
+                    />
+                  )
+                ) : turn.player === "player" ? (
+                  <Avatar size="large" src={AvatarSrc3} />
                 ) : (
                   <Avatar icon={<RobotOutlined />} size="large" />
                 )
