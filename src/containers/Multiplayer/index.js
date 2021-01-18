@@ -53,7 +53,7 @@ const Multiplayer = (props) => {
         <>
           <PlayArea
             turnArray={playerData.turnArray}
-            playerTurn={playerData.playerTurn}
+            playerTurn={position}
             gameMode={"multiplayer"}
           />
           <ActionButton

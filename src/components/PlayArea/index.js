@@ -28,7 +28,15 @@ const PlayArea = (props) => {
                   <Avatar icon={<RobotOutlined />} size="large" />
                 )
               }
-              title={turn.player === "player" ? "You" : "Bot"}
+              title={
+                props.gameMode === "multiplayer"
+                  ? props.playerTurn === turn.player
+                    ? "You"
+                    : "Player Two"
+                  : turn.player === "player"
+                  ? "You"
+                  : "Bot"
+              }
               description={
                 turn.action !== undefined && (
                   <Avatar
