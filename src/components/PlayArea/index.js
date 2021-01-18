@@ -3,6 +3,8 @@ import { List, Avatar } from "antd";
 import { RobotOutlined } from "@ant-design/icons";
 import "./style.css";
 import AvatarSrc3 from "../../assets/avatar@3x.png";
+// import AvatarSrc2 from "../../assets/avatar@2x.png";
+// import AvatarSrc1 from "../../assets/avatar@1x.png";
 import TakeawayImg from "../../assets/takeaway-avatar.png";
 import "antd/dist/antd.css";
 
@@ -25,7 +27,7 @@ const PlayArea = (props) => {
               avatar={
                 props.gameMode === "multiplayer" ? (
                   props.playerTurn === turn.player ? (
-                    <Avatar size="default" src={AvatarSrc3} />
+                    <Avatar size="large" src={AvatarSrc3} />
                   ) : (
                     <Avatar
                       size="default"
