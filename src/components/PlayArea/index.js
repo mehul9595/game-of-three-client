@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, { useEffect, useRef } from "react";
 import { List, Avatar } from "antd";
 import { RobotOutlined } from "@ant-design/icons";
 import "./style.css";
@@ -8,7 +8,8 @@ import "antd/dist/antd.css";
 const PlayArea = (props) => {
   const listItemRef = useRef(null);
   useEffect(() => {
-    listItemRef.current.scrollIntoView({behavior: 'smooth'});
+    if (listItemRef != null && listItemRef.current)
+      listItemRef.current.scrollIntoView({ behavior: "smooth" });
   });
 
   return (
