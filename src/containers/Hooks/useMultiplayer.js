@@ -4,7 +4,7 @@ import socketIOClient from "socket.io-client";
 const ACTIONS = "action"; // Name of the event
 const PLAYER_ONE = "setPlayerOne";
 const PLAYER_TWO = "setPlayerTwo";
-const SOCKET_SERVER_URL = "https://game-of-three-server.azurewebsites.net/";
+const SOCKET_SERVER_URL = process.env.REACT_APP_BACKEND_URL;
 const playerTypes = {
   player1: "playerOne",
   player2: "playerTwo",
