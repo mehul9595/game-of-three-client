@@ -1,16 +1,15 @@
 
 # Game of Three Frontend
 
-Game of three is a fun game played with multiplayer or computer.
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ![CI/CD](https://github.com/mehul9595/game-of-three-client/workflows/CI/CD%20game-of-three/badge.svg)
+
+Game of three is a fun game played with multiplayer or computer. The game is currently hosted on Azure, you can try out the live demo [here.](https://game-of-three.azurewebsites.net)
+
 
 This project is built with:
 
-- React
+- [React + Bootstrap with Create-react-app](https://github.com/facebook/create-react-app)
 - [Ant Design Components](https://ant.design/)
-- CSS
 - [NodeJS Backend](https://github.com/mehul9595/game-of-three-server)
 - [socket.io](https://socket.io/)
 
