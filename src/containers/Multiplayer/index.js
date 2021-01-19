@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import PlayArea from "../../components/PlayArea";
 import ActionButton from "../../components/ActionButton";
 import useMultiplayer from "../Hooks/useMultiplayer";
+import ModalResult from '../../components/Modal';
 import { message } from "antd";
 
 const Multiplayer = (props) => {
@@ -16,19 +17,19 @@ const Multiplayer = (props) => {
 
       if (lastTurn.value === 1) {
         setIsButtonDisabled(true);
-        //this.modalForGameResult(lastTurn.player);
-        message.success(`${lastTurn.player} Wins`);
-      } else {
-        //   if (playerData.turnCount !== 0) {
+        var msg = lastTurn.player === position ? "You Win" : "You Lost";
+        console.log("position:", position);
+        message.success(`${position} ${msg}`);
+        ModalResult(msg, () => props.history.push("/"));
+        
+      } else {        
         lastTurn.player === position
           ? setIsButtonDisabled(true)
           : setIsButtonDisabled(false);
-        //   }
       }
     }
-  }, [playerData, position]);
+  }, [playerData, position, props.history]);
 
-  //position, playerData
   const actionButtonHandler = (params) => {
     console.log(params);
 
@@ -39,8 +40,7 @@ const Multiplayer = (props) => {
         turnCount: playerData.turnCount + 1,
       });
     } else {
-      //   notify(`${currentTurnValue} can not be divided by ${actionValue}`);
-      alert(`${currentTurnValue} can not be divided by ${params}`);
+      message.error(`${currentTurnValue} can not be divided by ${params}`);
     }
   };
 
@@ -48,7 +48,7 @@ const Multiplayer = (props) => {
     <div>
       <Header />
       {!playerData.isGameStart ? (
-        <h3>Waiting for another player...</h3>
+        <h3> Waiting for another player to join the game...</h3>
       ) : (
         <>
           <PlayArea

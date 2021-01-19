@@ -51,19 +51,32 @@ const useMultiplayer = () => {
     turnValue,
     requiredNumberToBeDividedByThree
   ) => {
-    let calculatedNumber = turnValue + requiredNumberToBeDividedByThree;
-    return parseInt(calculatedNumber, 10) / 3;
+    let calculatedValue = parseInt( turnValue + requiredNumberToBeDividedByThree, 10) / 3;
+    let stringExpression = `[( ${requiredNumberToBeDividedByThree} + ${
+      turnValue
+    } ) / 3] = ${calculatedValue}`;
+
+    // console.log("stringExpression: ", stringExpression);
+
+    // return parseInt(calculatedNumber, 10) / 3;
+     return {
+      value: calculatedValue,
+      valueExpresionStr: stringExpression,
+    };
   };
 
   const setNextTurn = (turnCount, requiredNumberToBeDividedByThree) => {
     let turnValue = playerData.turnArray[turnCount - 1].value;
+    let calcNewNumber = calculateNewNumberToSendOpponent(
+      turnValue,
+      requiredNumberToBeDividedByThree
+    );
     let newTurn = {
       id: turnCount,
       player: turnCount % 2 === 0 ? playerTypes.player1 : playerTypes.player2,
-      value: calculateNewNumberToSendOpponent(
-        turnValue,
-        requiredNumberToBeDividedByThree
-      ),
+      value: calcNewNumber.value,
+      action: requiredNumberToBeDividedByThree,
+      valueExpression: calcNewNumber.valueExpresionStr,
     };
     let temporaryTurnArray = playerData.turnArray;
     temporaryTurnArray.push(newTurn);

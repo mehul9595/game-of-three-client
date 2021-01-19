@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "../../components/Header";
 import PlayArea from "../../components/PlayArea";
 import ActionButton from "../../components/ActionButton";
+import ModalResult from "../../components/Modal";
 import { message } from "antd";
 import "antd/dist/antd.css";
 
@@ -93,8 +94,7 @@ const SinglePlayer = (props) => {
       calculateNumbers(turnCounter);
       console.log("new turnCounter", turnCounter);
       if (calculateNewNumberToSendOpponent(turnCounter).value === 1) {
-        // this.modalForGameResult(this.detectTurnPlayer());
-        message.success("Bot wins", 5);
+        ModalResult("You Lost!", () => props.history.push("/"));
         return true;
       } else {
         setTurnCount(turnCounter);
@@ -111,14 +111,12 @@ const SinglePlayer = (props) => {
     let currentValue = turnArray[turnCount].value;
 
     if ((currentValue + actionValue) % 3 === 0) {
-      message.success("OK good");
       let turnCounter = turnCount + 1;
 
       calculateNumbers(turnCounter);
       console.log("turnCount", turnCounter);
       if (calculateNewNumberToSendOpponent(turnCounter).value === 1) {
-        // this.modalForGameResult(this.detectTurnPlayer());
-        message.success("Player wins", 5);
+        ModalResult("Player wins", () => props.history.push("/"));
         return true;
       }
       setTurnCount(turnCounter);
