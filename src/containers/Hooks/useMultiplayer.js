@@ -1,17 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
+import Helper from '../../utils/helper';
 
 const ACTIONS = "action"; // Name of the event
 const PLAYER_ONE = "setPlayerOne";
 const PLAYER_TWO = "setPlayerTwo";
 const SOCKET_SERVER_URL = process.env.REACT_APP_BACKEND_URL;
-const playerTypes = {
-  player1: "playerOne",
-  player2: "playerTwo",
-};
+// const playerTypes = {
+//   player1: "playerOne",
+//   player2: "playerTwo",
+// };
 
 const useMultiplayer = () => {
-  //   const [messages, setMessages] = useState([]); // Sent and received messages
   const socketRef = useRef();
   const [position, setPosition] = useState("");
   const [playerData, setPlayerData] = useState({});
@@ -32,10 +32,10 @@ const useMultiplayer = () => {
 
     socketRef.current.on(PLAYER_ONE, (position) => {
       console.log("intialize player one");
-      setPosition(playerTypes.player1);
+      setPosition(Helper.playerTypes.player1);
     });
     socketRef.current.on(PLAYER_TWO, (position) => {
-      setPosition(playerTypes.player2);
+      setPosition(Helper.playerTypes.player2);
       console.log("intialize player two");
     });
 
@@ -72,7 +72,7 @@ const useMultiplayer = () => {
     );
     let newTurn = {
       id: turnCount,
-      player: turnCount % 2 === 0 ? playerTypes.player1 : playerTypes.player2,
+      player: turnCount % 2 === 0 ? Helper.playerTypes.player1 : Helper.playerTypes.player2,
       value: calcNewNumber.value,
       action: requiredNumberToBeDividedByThree,
       valueExpression: calcNewNumber.valueExpresionStr,
@@ -91,7 +91,7 @@ const useMultiplayer = () => {
       userAction.requiredNumberToBeDividedByThree
     );
 
-    console.log("New Turn Array@94:", newArrayData);
+    // console.log("New Turn Array@94:", newArrayData);
     socketRef.current.emit(ACTIONS, {
       turnArray: newArrayData,
       turnCount: userAction.turnCount,

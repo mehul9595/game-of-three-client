@@ -7,16 +7,10 @@ import { message } from "antd";
 import "antd/dist/antd.css";
 import Helper from "../../utils/helper";
 
-// const getInitialNumber = () => {
-//   let randomNumber = parseInt(Math.random() * 100, 10);
-//   if (randomNumber < 2) getInitialNumber();
-//   else return randomNumber;
+// const playerTypes = {
+//   bot: "bot",
+//   player: "player",
 // };
-
-const playerTypes = {
-  bot: "bot",
-  player: "player",
-};
 
 const SinglePlayer = (props) => {
   const [turnCount, setTurnCount] = useState(0);
@@ -24,7 +18,7 @@ const SinglePlayer = (props) => {
   const [turnArray, setTurnArray] = useState([
     {
       id: 0,
-      player: playerTypes.bot,
+      player: Helper.playerTypes.bot,
       value: Helper.getGameRandomNumber(),
       action: undefined,
       valueExpression: "",
@@ -32,8 +26,8 @@ const SinglePlayer = (props) => {
   ]);
 
   const findNumberToBeAdded = (turnValue) => {
-    console.log(turnValue);
-    console.log("turnCOunt", turnCount);
+    // console.log(turnValue);
+    // console.log("turnCOunt", turnCount);
     if (turnValue % 3 === 0) {
       requiredNumberToBeDividedByThree = 0;
     } else if ((turnValue + 1) % 3 === 0) {
@@ -48,11 +42,11 @@ const SinglePlayer = (props) => {
   };
 
   const getPlayerTurn = (params) => {
-    let turnPlayer = params % 2 === 0 ? playerTypes.bot : playerTypes.player;
+    let turnPlayer = params % 2 === 0 ? Helper.playerTypes.bot : Helper.playerTypes.player;
     return turnPlayer;
   };
 
-  const setNewTurn = (turnCounter) => {
+  const setNextTurn = (turnCounter) => {
     var calcNewNumber = calculateNewNumberToSendOpponent(turnCounter);
     let newTurn = {
       id: turnCounter,
@@ -74,7 +68,7 @@ const SinglePlayer = (props) => {
     let stringExpression = `[( ${requiredNumberToBeDividedByThree} + ${
       turnArray[turnCounter - 1].value
     } ) / 3] = ${calculatedValue}`;
-    console.log("stringExpression: ", stringExpression);
+    // console.log("stringExpression: ", stringExpression);
 
     return {
       value: calculatedValue,
@@ -86,14 +80,15 @@ const SinglePlayer = (props) => {
     let turnValue = turnArray[turnCount - 1].value;
 
     findNumberToBeAdded(turnValue);
-    setNewTurn(turnCount);
+    setNextTurn(turnCount);
   };
 
   useEffect(() => {
-    if (turnCount > 0 && turnCount % 2 !== 0) {
+    if (turnCount > 0 && turnCount % 2 !== 0) { // here, auto play bot's turn
       var turnCounter = turnCount + 1;
       calculateNumbers(turnCounter);
-      console.log("new turnCounter", turnCounter);
+      // console.log("new turnCounter", turnCounter);
+
       if (calculateNewNumberToSendOpponent(turnCounter).value === 1) {
         ModalResult(Helper.lostMessage, false, () =>
           props.history.push("/")
@@ -104,7 +99,7 @@ const SinglePlayer = (props) => {
       }
     }
 
-    console.log(turnCount, turnArray);
+    // console.log(turnCount, turnArray);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [turnCount]);
 
@@ -112,11 +107,11 @@ const SinglePlayer = (props) => {
     let actionValue = parseInt(action);
     let currentValue = turnArray[turnCount].value;
 
-    if ((currentValue + actionValue) % 3 === 0) {
+    if ((currentValue + actionValue) % 3 === 0) { // player's turn
       let turnCounter = turnCount + 1;
 
       calculateNumbers(turnCounter);
-      console.log("turnCount", turnCounter);
+      // console.log("turnCount", turnCounter);
       if (calculateNewNumberToSendOpponent(turnCounter).value === 1) {
         ModalResult(Helper.winningMessage, true, () =>
           props.history.push("/")

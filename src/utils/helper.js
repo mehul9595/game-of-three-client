@@ -6,6 +6,12 @@ const Helper = {
     if (randomNumber < 2) this.getGameRandomNumber();
     else return randomNumber;
   },
+  playerTypes : {
+    bot: "bot",
+    player: "player",
+    player1: "playerOne",
+    player2: "playerTwo",
+  }
 };
 
 export default Helper;
