@@ -4,7 +4,7 @@ import socketIOClient from "socket.io-client";
 const ACTIONS = "action"; // Name of the event
 const PLAYER_ONE = "setPlayerOne";
 const PLAYER_TWO = "setPlayerTwo";
-const SOCKET_SERVER_URL = "http://localhost:3005";
+const SOCKET_SERVER_URL = "https://game-of-three-server.azurewebsites.net/";
 const playerTypes = {
   player1: "playerOne",
   player2: "playerTwo",
@@ -27,7 +27,6 @@ const useMultiplayer = () => {
         turnArray: message.turnArray,
         turnCount: message.turnCount,
       };
-      //   setMessages((messages) => [...messages, incomingMessage]);
       setPlayerData(playerState);
     });
 

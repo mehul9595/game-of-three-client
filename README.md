@@ -1,5 +1,5 @@
 
-# Game of Three Frontend
+# Game of Three
 
 ![CI/CD](https://github.com/mehul9595/game-of-three-client/workflows/CI/CD%20game-of-three/badge.svg)
 
