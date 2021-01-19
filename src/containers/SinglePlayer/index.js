@@ -5,12 +5,13 @@ import ActionButton from "../../components/ActionButton";
 import ModalResult from "../../components/Modal";
 import { message } from "antd";
 import "antd/dist/antd.css";
+import Helper from "../../utils/helper";
 
-const getInitialNumber = () => {
-  let randomNumber = parseInt(Math.random() * 100, 10);
-  if (randomNumber < 2) getInitialNumber();
-  else return randomNumber;
-};
+// const getInitialNumber = () => {
+//   let randomNumber = parseInt(Math.random() * 100, 10);
+//   if (randomNumber < 2) getInitialNumber();
+//   else return randomNumber;
+// };
 
 const playerTypes = {
   bot: "bot",
@@ -24,13 +25,13 @@ const SinglePlayer = (props) => {
     {
       id: 0,
       player: playerTypes.bot,
-      value: getInitialNumber(),
+      value: Helper.getGameRandomNumber(),
       action: undefined,
       valueExpression: "",
     },
   ]);
 
-  const assignNumberNeedsToBeAdded = (turnValue) => {
+  const findNumberToBeAdded = (turnValue) => {
     console.log(turnValue);
     console.log("turnCOunt", turnCount);
     if (turnValue % 3 === 0) {
@@ -84,7 +85,7 @@ const SinglePlayer = (props) => {
   const calculateNumbers = (turnCount) => {
     let turnValue = turnArray[turnCount - 1].value;
 
-    assignNumberNeedsToBeAdded(turnValue);
+    findNumberToBeAdded(turnValue);
     setNewTurn(turnCount);
   };
 
@@ -94,7 +95,9 @@ const SinglePlayer = (props) => {
       calculateNumbers(turnCounter);
       console.log("new turnCounter", turnCounter);
       if (calculateNewNumberToSendOpponent(turnCounter).value === 1) {
-        ModalResult("You Lost!", () => props.history.push("/"));
+        ModalResult(Helper.lostMessage, false, () =>
+          props.history.push("/")
+        );
         return true;
       } else {
         setTurnCount(turnCounter);
@@ -102,11 +105,10 @@ const SinglePlayer = (props) => {
     }
 
     console.log(turnCount, turnArray);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [turnCount]);
 
   const checkActionAndResult = (action) => {
-    message.info(action);
     let actionValue = parseInt(action);
     let currentValue = turnArray[turnCount].value;
 
@@ -116,12 +118,14 @@ const SinglePlayer = (props) => {
       calculateNumbers(turnCounter);
       console.log("turnCount", turnCounter);
       if (calculateNewNumberToSendOpponent(turnCounter).value === 1) {
-        ModalResult("Player wins", () => props.history.push("/"));
+        ModalResult(Helper.winningMessage, true, () =>
+          props.history.push("/")
+        );
         return true;
       }
       setTurnCount(turnCounter);
     } else {
-      message.error("Number cannot be divided by 3");
+      message.error(`${currentValue} can not be divided by ${action}`);
     }
   };
 

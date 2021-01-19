@@ -5,6 +5,7 @@ import ActionButton from "../../components/ActionButton";
 import useMultiplayer from "../Hooks/useMultiplayer";
 import ModalResult from '../../components/Modal';
 import { message } from "antd";
+import Helper from '../../utils/helper';
 
 const Multiplayer = (props) => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -17,10 +18,9 @@ const Multiplayer = (props) => {
 
       if (lastTurn.value === 1) {
         setIsButtonDisabled(true);
-        var msg = lastTurn.player === position ? "You Win" : "You Lost";
+        var msg = lastTurn.player === position ? Helper.winningMessage : Helper.lostMessage;
         console.log("position:", position);
-        message.success(`${position} ${msg}`);
-        ModalResult(msg, () => props.history.push("/"));
+        ModalResult(msg, lastTurn.player === position, () => props.history.push("/"));
         
       } else {        
         lastTurn.player === position
@@ -30,17 +30,17 @@ const Multiplayer = (props) => {
     }
   }, [playerData, position, props.history]);
 
-  const actionButtonHandler = (params) => {
-    console.log(params);
+  const actionButtonHandler = (action) => {
+    console.log(action);
 
     let currentTurnValue = playerData.turnArray[playerData.turnCount].value;
-    if ((currentTurnValue + params) % 3 === 0) {
+    if ((currentTurnValue + action) % 3 === 0) {
       calculateUserAction({
-        requiredNumberToBeDividedByThree: params,
+        requiredNumberToBeDividedByThree: action,
         turnCount: playerData.turnCount + 1,
       });
     } else {
-      message.error(`${currentTurnValue} can not be divided by ${params}`);
+      message.error(`${currentTurnValue} can not be divided by ${action}`);
     }
   };
 
