@@ -3,7 +3,7 @@
 
 ![CI/CD](https://github.com/mehul9595/game-of-three-client/workflows/CI/CD%20game-of-three/badge.svg)
 
-Game of three is a fun game played with multiplayer or computer. The game is currently hosted on Azure, you can try out the live demo [here.](https://game-of-three.azurewebsites.net)
+Game of three is a fun game played with multiplayer or computer. The game is currently hosted on Azure, you can try out the live demo [here.](https://game-of-three.azurewebsites.net) Site can be also accessed through it's [CDN here](https://game-of-three.azureedge.net).
 
 This project is built with:
 
