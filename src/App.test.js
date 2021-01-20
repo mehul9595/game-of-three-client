@@ -1,6 +1,4 @@
-import { render, screen } from "@testing-library/react";
 import App from "./App";
-import renderer from "react-test-renderer";
 import { shallow } from "enzyme";
 import { Route } from "react-router-dom";
 import Home from "./components/Home";
@@ -20,9 +18,9 @@ describe("AppComponent", () => {
   });
 
   test("should contain 4 routes", () => {
-    // const container = render(<App />).container;
+    
     expect(wrapper.find(Route)).toHaveLength(4);
-    // expect(container.firstChild.className).toBe("App");
+    
   });
 
   it("should show MainScreen component", () => {

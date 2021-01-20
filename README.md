@@ -5,7 +5,6 @@
 
 Game of three is a fun game played with multiplayer or computer. The game is currently hosted on Azure, you can try out the live demo [here.](https://game-of-three.azurewebsites.net)
 
-
 This project is built with:
 
 - [React + Bootstrap with Create-react-app](https://github.com/facebook/create-react-app)

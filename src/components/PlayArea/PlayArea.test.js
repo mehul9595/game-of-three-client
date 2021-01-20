@@ -1,5 +1,3 @@
-import react from 'react';
-// import { render } from '@testing-library/react';
 import renderer from 'react-test-renderer';
 import PlayArea from './index';
 import { shallow } from 'enzyme';

@@ -28,12 +28,10 @@ const useMultiplayer = () => {
     });
 
     socketRef.current.on(PLAYER_ONE, (position) => {
-      console.log("intialize player one");
       setPosition(Helper.playerTypes.player1);
     });
     socketRef.current.on(PLAYER_TWO, (position) => {
       setPosition(Helper.playerTypes.player2);
-      console.log("intialize player two");
     });
 
     // Destroys the socket reference

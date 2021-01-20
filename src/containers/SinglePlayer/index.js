@@ -7,11 +7,6 @@ import { message } from "antd";
 import "antd/dist/antd.css";
 import Helper from "../../utils/helper";
 
-// const playerTypes = {
-//   bot: "bot",
-//   player: "player",
-// };
-
 const SinglePlayer = (props) => {
   const [turnCount, setTurnCount] = useState(0);
   let requiredNumberToBeDividedByThree = null;
@@ -68,7 +63,6 @@ const SinglePlayer = (props) => {
     let stringExpression = `[( ${requiredNumberToBeDividedByThree} + ${
       turnArray[turnCounter - 1].value
     } ) / 3] = ${calculatedValue}`;
-    // console.log("stringExpression: ", stringExpression);
 
     return {
       value: calculatedValue,
@@ -87,7 +81,6 @@ const SinglePlayer = (props) => {
     if (turnCount > 0 && turnCount % 2 !== 0) { // here, auto play bot's turn
       var turnCounter = turnCount + 1;
       calculateNumbers(turnCounter);
-      // console.log("new turnCounter", turnCounter);
 
       if (calculateNewNumberToSendOpponent(turnCounter).value === 1) {
         ModalResult(Helper.lostMessage, false, () =>
@@ -98,8 +91,6 @@ const SinglePlayer = (props) => {
         setTurnCount(turnCounter);
       }
     }
-
-    // console.log(turnCount, turnArray);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [turnCount]);
 
@@ -111,7 +102,6 @@ const SinglePlayer = (props) => {
       let turnCounter = turnCount + 1;
 
       calculateNumbers(turnCounter);
-      // console.log("turnCount", turnCounter);
       if (calculateNewNumberToSendOpponent(turnCounter).value === 1) {
         ModalResult(Helper.winningMessage, true, () =>
           props.history.push("/")

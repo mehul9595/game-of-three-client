@@ -12,14 +12,12 @@ const Multiplayer = (props) => {
   const { playerData, position, calculateUserAction } = useMultiplayer();
 
   useEffect(() => {
-    // console.log("playerData:@18", playerData);
     if (playerData && playerData.turnArray) {
       var lastTurn = playerData.turnArray[playerData.turnCount];
 
       if (lastTurn.value === 1) {
         setIsButtonDisabled(true);
         var msg = lastTurn.player === position ? Helper.winningMessage : Helper.lostMessage;
-        // console.log("position:", position);
         ModalResult(msg, lastTurn.player === position, () => props.history.push("/"));
         
       } else {        
@@ -31,7 +29,6 @@ const Multiplayer = (props) => {
   }, [playerData, position, props.history]);
 
   const actionButtonHandler = (action) => {
-    // console.log(action);
 
     let currentTurnValue = playerData.turnArray[playerData.turnCount].value;
     if ((currentTurnValue + action) % 3 === 0) {

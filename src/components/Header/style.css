@@ -5,7 +5,6 @@
   }
   
   .App-header {
-    /* font-size: calc(10px + 1.5vmin); */
     color: white;
     display: flex;
     background: #50aadd;
@@ -24,14 +23,10 @@
   }
   
   .first-line {
-    /* display: flex;
-    align-self: flex-start; */
     font-size: calc(1em + 1vmin);
   }
   
   .sub-title {
     font-size: 1em;
-    /* display: flex;
-    align-self: flex-end; */
   }
   

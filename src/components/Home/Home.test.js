@@ -7,13 +7,9 @@ import Home from "./index";
 describe("HomeComponent", () => {
   afterEach(cleanup);
   const wrapper = shallow(<Home />);
-  //const instance = wrapper.instance();
   const gameName = "Game of Three @ Scoober";
 
   it("should match the header", () => {
-    // const root = renderer.create(<Home />).root;
-    // const element = root.findByType("div");
-    // expect(element.props.className.includes("game-home")).toBe(true);    
     expect(wrapper.find("h1").contains(gameName)).toBe(true);
   });
 
@@ -35,7 +31,6 @@ describe("HomeComponent", () => {
   it("should render sucessfully with snapshot", () => {
     
      const tree = renderer.create(wrapper).toJSON();
-    // const tree = render(<Home />).container;
     expect(tree).toMatchSnapshot();
   });
 });
