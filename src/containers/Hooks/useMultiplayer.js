@@ -18,8 +18,8 @@ const useMultiplayer = () => {
 
   useEffect(() => {
     // Creates a WebSocket connection
-    console.log("backend url:", SOCKET_SERVER_URL);
-    socketRef.current = socketIOClient(SOCKET_SERVER_URL);
+    console.log("backend url:", "https://game-of-three-server.azurewebsites.net");
+    socketRef.current = socketIOClient("https://game-of-three-server.azurewebsites.net");
 
     // Listens for incoming messages
     socketRef.current.on(ACTIONS, (message) => {
