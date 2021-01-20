@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from 'react-test-renderer';
-import { render, cleanup } from "@testing-library/react";
+import {  cleanup } from "@testing-library/react";
 import { shallow } from "enzyme";
 import Home from "./index";
 
@@ -24,14 +24,11 @@ describe("HomeComponent", () => {
   test('should contain Singleplayer button', () => {
     expect(wrapper.find("Button").contains("Single Player")).toBe(true);
 
-    // expect(wrapper.find(''))
-    // expect(wrapper.find('[data-testid="multiplayerBtn"]')).toBe(true);
   });
 
   test('should contain multiplayer button', () => {
     expect(wrapper.find({ 'data-testId': 'multiplayerBtn' })).toHaveLength(1);
-    
-  })
+  });
   
   
 

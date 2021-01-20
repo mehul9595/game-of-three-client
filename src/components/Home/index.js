@@ -11,7 +11,7 @@ const Home = (props) => {
       <Divider className="game-home-divider" />
       <Row justify="center">
         <Col>
-          <Button
+          <Button key="singlePlayer"
             type="primary"
             icon={<PlayCircleOutlined />}
             htmlType="button"
@@ -26,6 +26,7 @@ const Home = (props) => {
         <Col>
           <Button
             type="primary"
+            key="multiPlayer"
             htmlType="button"
             className="game-button"
             icon={<PlayCircleOutlined />}

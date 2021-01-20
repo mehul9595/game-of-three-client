@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderComponent should match the snapshot sucessfully 1`] = `
+<header
+  class="App-header"
+>
+  <img
+    alt="logo"
+    class="App-logo"
+    src="logo.svg"
+  />
+  <div
+    class="title"
+  >
+    <div
+      class="first-line"
+    >
+      Scoober - Takeaway.com
+    </div>
+    <div
+      class="sub-title"
+    >
+      Win the game or win the job
+    </div>
+  </div>
+</header>
+`;
