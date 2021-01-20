@@ -18,6 +18,7 @@ const useMultiplayer = () => {
 
   useEffect(() => {
     // Creates a WebSocket connection
+    console.log("backend url:", SOCKET_SERVER_URL);
     socketRef.current = socketIOClient(SOCKET_SERVER_URL);
 
     // Listens for incoming messages
