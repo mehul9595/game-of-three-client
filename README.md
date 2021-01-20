@@ -13,9 +13,27 @@ This project is built with:
 - [NodeJS Backend](https://github.com/mehul9595/game-of-three-server)
 - [socket.io](https://socket.io/)
 
+## Description
+
+When a player starts, they incept a random (whole) number and send it to the second player as an
+approach of starting the game. The receiving player can then choose between adding one of {-1,0,1} in
+order to get to a number that is divisible by 3. The resulting whole number is then sent back to the original
+sender.
+The same rules are applied until one player reaches the number 1 (after the division. See example
+[here](https://invis.io/JHN2247E9MK).)
+
+For each "move", a sufficient output should be generated (mandatory: the added, and the resulting
+number).
+Both players should be able to play automatically without user input. One of the players should optionally
+be adjustable by a user.
+
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `yarn install`
+
+To install the packages and dependencies required by the project.
 
 ### `yarn start`
 
