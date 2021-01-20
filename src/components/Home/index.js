@@ -30,7 +30,8 @@ const Home = (props) => {
             className="game-button"
             icon={<PlayCircleOutlined />}
             onClick={() => props.history.push("/multiplayer")}
-          >
+            data-testId="multiplayerBtn"
+          > 
             Multiplayer
           </Button>
         </Col>

@@ -8,15 +8,17 @@ exports[`ActionButton Component should match the snapshot sucessfully 1`] = `
     className="ant-btn ant-btn-primary ant-btn-circle ant-btn-lg"
     onClick={[Function]}
     type="button"
+    value={-1}
   >
     <span>
-      +1
+      -1
     </span>
   </button>
   <button
     className="ant-btn ant-btn-primary ant-btn-circle ant-btn-lg"
     onClick={[Function]}
     type="button"
+    value={0}
   >
     <span>
       0
@@ -26,9 +28,10 @@ exports[`ActionButton Component should match the snapshot sucessfully 1`] = `
     className="ant-btn ant-btn-primary ant-btn-circle ant-btn-lg"
     onClick={[Function]}
     type="button"
+    value={1}
   >
     <span>
-      -1
+      +1
     </span>
   </button>
 </div>

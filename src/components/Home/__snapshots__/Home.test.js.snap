@@ -66,6 +66,7 @@ exports[`HomeComponent should render sucessfully with snapshot 1`] = `
       >
         <button
           className="ant-btn ant-btn-primary game-button"
+          data-testId="multiplayerBtn"
           onClick={[Function]}
           type="button"
         >
