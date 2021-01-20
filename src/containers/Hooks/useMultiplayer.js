@@ -5,11 +5,7 @@ import Helper from '../../utils/helper';
 const ACTIONS = "action"; // Name of the event
 const PLAYER_ONE = "setPlayerOne";
 const PLAYER_TWO = "setPlayerTwo";
-const SOCKET_SERVER_URL = process.env.REACT_APP_BACKEND_URL;
-// const playerTypes = {
-//   player1: "playerOne",
-//   player2: "playerTwo",
-// };
+const SOCKET_SERVER_URL = process.env.REACT_APP_BACKEND_URL || "https://game-of-three-server.azurewebsites.net";
 
 const useMultiplayer = () => {
   const socketRef = useRef();
@@ -56,9 +52,6 @@ const useMultiplayer = () => {
       turnValue
     } ) / 3] = ${calculatedValue}`;
 
-    // console.log("stringExpression: ", stringExpression);
-
-    // return parseInt(calculatedNumber, 10) / 3;
      return {
       value: calculatedValue,
       valueExpresionStr: stringExpression,
