@@ -11,7 +11,7 @@ import {
   NUMBER_TO_DIVIDE_BY_THREE,
   TURN_COUNTER,
   BOT_ACTION,
-  INITIALIZE_GAME_PLAY
+  INITIALIZE_GAME_PLAY,
 } from "../../redux/actionTypes";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -19,20 +19,23 @@ const SinglePlayerRedux = (props) => {
   const playerData = useSelector((state) => state.PlayerData);
   const dispatch = useDispatch();
 
-  
   useEffect(() => {
     if (playerData.winner === true) {
-
       console.log(playerData.turnCount);
 
       let lastTurn = playerData.turnArray[playerData.turnCount];
-      console.log("last turn under winner effect", lastTurn);
-      ModalResult("", lastTurn.player === Helper.playerTypes.player, () =>
-        props.history.push("/")
-      );
+      // console.log("last turn under winner effect", lastTurn);
       
+      setTimeout(() => {
+        ModalResult("", lastTurn.player === Helper.playerTypes.player, () => {
+          props.history.push("/");
+          dispatch({ type: INITIALIZE_GAME_PLAY });
+        });  
+      }, 500);
+
       return true;
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [playerData, props]);
 
   const onActionButtonClick = (action) => {

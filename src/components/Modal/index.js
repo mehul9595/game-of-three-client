@@ -3,7 +3,7 @@ import { Modal } from "antd";
 import Winner from "../../assets/Winner.png";
 import Lost from "../../assets/Lost.png";
 import "./style.css";
-import Helper from '../../utils/helper';
+import Helper from "../../utils/helper";
 
 const ModalResult = (message = "", win, redirectURL) => {
   Modal.success({
