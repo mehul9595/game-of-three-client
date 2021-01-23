@@ -3,8 +3,9 @@ import { Modal } from "antd";
 import Winner from "../../assets/Winner.png";
 import Lost from "../../assets/Lost.png";
 import "./style.css";
+import Helper from '../../utils/helper';
 
-const ModalResult = (message, win, redirectURL) => {
+const ModalResult = (message = "", win, redirectURL) => {
   Modal.success({
     title: "Match Result",
     content: (
@@ -14,7 +15,7 @@ const ModalResult = (message, win, redirectURL) => {
         ) : (
           <img className="winner-img" src={Lost} alt="Lost" />
         )}
-        <h3>{message}</h3>
+        <h3>{win ? Helper.winningMessage : Helper.lostMessage}</h3>
       </div>
     ),
     okText: "Start Again",
