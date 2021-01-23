@@ -1,20 +1,21 @@
 import React from "react";
 import renderer from 'react-test-renderer';
 import {  cleanup } from "@testing-library/react";
+import { Provider } from 'react-redux';
 import { shallow } from "enzyme";
 import Home from "./index";
 
 describe("HomeComponent", () => {
   afterEach(cleanup);
-  const wrapper = shallow(<Home />);
+  const wrapper = shallow(<Provider><Home /></Provider>);
   const gameName = "Game of Three @ Scoober";
 
   it("should match the header", () => {
     expect(wrapper.find("h1").contains(gameName)).toBe(true);
   });
 
-  it("should contain 2 buttons", () => {
-    expect(wrapper.find("Button")).toHaveLength(2);
+  it("should contain 3 buttons", () => {
+    expect(wrapper.find("Button")).toHaveLength(3);
   });
 
   test('should contain Singleplayer button', () => {
@@ -23,7 +24,7 @@ describe("HomeComponent", () => {
   });
 
   test('should contain multiplayer button', () => {
-    expect(wrapper.find({ 'data-testId': 'multiplayerBtn' })).toHaveLength(1);
+    expect(wrapper.find({ 'data-testid': 'multiplayerBtn' })).toHaveLength(1);
   });
   
   

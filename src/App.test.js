@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 import Home from "./components/Home";
 import SinglePlayer from './containers/SinglePlayer';
 import Multiplayer from './containers/Multiplayer';
+import SinglePlayerRedux from './containers/SinglePlayerRedux';
 
 let pathMap = {};
 describe("AppComponent", () => {
@@ -19,23 +20,27 @@ describe("AppComponent", () => {
 
   test("should contain 4 routes", () => {
     
-    expect(wrapper.find(Route)).toHaveLength(4);
+    expect(wrapper.find(Route)).toHaveLength(5);
     
   });
 
-  it("should show MainScreen component", () => {
+  test("should show MainScreen component", () => {
     expect(pathMap["/"]).toBe(Home);
   });
 
-  it("should show SinglePlayer component", () => {
+  test("should show SinglePlayer component", () => {
     expect(pathMap["/singleplayer"]).toBe(SinglePlayer);
   });
 
-  it("should show MultiPlayer component", () => {
+  test("should show MultiPlayer component", () => {
     expect(pathMap["/multiplayer"]).toBe(Multiplayer);
   });
 
-  it("should show page not found case", () => {
+  test("should show Single player redux component", () => {
+    expect(pathMap["/singleplayer-redux"]).toBe(SinglePlayerRedux);
+  });
+
+  test("should show page not found case", () => {
     expect(pathMap[undefined]()).toMatchObject(<div>Page not found...</div>);
   });
 });
