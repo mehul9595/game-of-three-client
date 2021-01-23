@@ -3,8 +3,11 @@ import { Card, Button, Divider, Row, Col } from "antd";
 import { PlayCircleOutlined } from "@ant-design/icons";
 import "./style.css";
 import "antd/dist/antd.css";
+import { INITIALIZE_GAME_PLAY } from '../../redux/actionTypes';
+import { useDispatch } from 'react-redux';
 
 const Home = (props) => {
+  const dispatch = useDispatch();
   return (
     <Card bordered hoverable className="game-home">
       <h1>Game of Three @ Scoober</h1>
@@ -31,9 +34,26 @@ const Home = (props) => {
             className="game-button"
             icon={<PlayCircleOutlined />}
             onClick={() => props.history.push("/multiplayer")}
-            data-testId="multiplayerBtn"
+            data-testid="multiplayerBtn"
           > 
             Multiplayer
+          </Button>
+        </Col>
+      </Row>
+      <Row justify="center">
+        <Col>
+          <Button
+            type="primary"
+            key="singleplayer-redux"
+            htmlType="button"
+            className="game-button"
+            icon={<PlayCircleOutlined />}
+            onClick={() =>{ 
+              dispatch({type: INITIALIZE_GAME_PLAY });
+
+              props.history.push("/singleplayer-redux");}}
+          > 
+            Single Player Redux
           </Button>
         </Col>
       </Row>
