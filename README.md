@@ -12,6 +12,8 @@ This project is built with:
 - [NodeJS Backend](https://github.com/mehul9595/game-of-three-server)
 - [socket.io](https://socket.io/)
 
+*Note: Checkout [feature branch](https://github.com/mehul9595/game-of-three-client/tree/redux) to see the implementation of Single Player game mode using React-Redux and Hooks way.*
+
 ## Description
 
 When a player starts, they incept a random (whole) number and send it to the second player as an
